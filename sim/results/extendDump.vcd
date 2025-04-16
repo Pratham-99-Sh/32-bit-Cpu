@@ -1,0 +1,43 @@
+$date
+	Wed Apr 16 14:23:26 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testBench $end
+$var wire 32 ! ExtImm [31:0] $end
+$var reg 2 " ImmSrc [1:0] $end
+$var reg 24 # Instr [23:0] $end
+$scope module e1 $end
+$var wire 2 $ ImmSrc [1:0] $end
+$var wire 24 % Instr [23:0] $end
+$var reg 32 & ExtImm [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx &
+b1001 %
+bx $
+b1001 #
+bx "
+bx !
+$end
+#16
+b1001 !
+b1001 &
+b0 "
+b0 $
+#26
+b1 "
+b1 $
+#36
+b100100 !
+b100100 &
+b10 "
+b10 $
+#300
