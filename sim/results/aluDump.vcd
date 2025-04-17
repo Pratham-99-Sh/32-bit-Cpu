@@ -1,0 +1,70 @@
+$date
+	Thu Apr 17 09:58:24 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testBench $end
+$var wire 1 ! Zero $end
+$var wire 1 " Overflow $end
+$var wire 1 # Negative $end
+$var wire 1 $ Carry $end
+$var wire 32 % ALUResult [31:0] $end
+$var reg 2 & ALUControl [1:0] $end
+$var reg 32 ' SrcA [31:0] $end
+$var reg 32 ( SrcB [31:0] $end
+$scope module A $end
+$var wire 2 ) ALUControl [1:0] $end
+$var wire 32 * SrcA [31:0] $end
+$var wire 32 + SrcB [31:0] $end
+$var wire 1 ! Zero $end
+$var wire 1 # Negative $end
+$var reg 32 , ALUResult [31:0] $end
+$var reg 1 $ Carry $end
+$var reg 1 " Overflow $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 ,
+b101 +
+b100 *
+bx )
+b101 (
+b100 '
+bx &
+b0 %
+0$
+0#
+0"
+1!
+$end
+#16
+0!
+b100 %
+b100 ,
+b0 &
+b0 )
+#26
+b101 %
+b101 ,
+b1 &
+b1 )
+#36
+b1001 %
+b1001 ,
+b10 &
+b10 )
+#46
+1#
+1"
+1$
+b11111111111111111111111111111111 %
+b11111111111111111111111111111111 ,
+b11 &
+b11 )
+#300
