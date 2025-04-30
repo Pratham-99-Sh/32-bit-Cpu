@@ -1,3 +1,5 @@
+// fix the alucontrol functions to match with aludecoder inteded function pattern (ex. add, and, ...)
+
 module ALU (
     input  [31:0] SrcA,        // 32-bit input A
     input  [31:0] SrcB,        // 32-bit input B
