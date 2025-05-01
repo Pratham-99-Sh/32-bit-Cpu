@@ -49,4 +49,6 @@ module decoder(input [1:0] Op,
     end
 
     assign PCS = ((Rd == 4'b1111) & RegW) | Branch;
+    //Here even if we just write to r15 it will not change pc but we still want to update our pc to that new instruction address
+    //therefore we will keep our PCS high so that PC will get the same signal (result) that regfile writeData port will get.
 endmodule
