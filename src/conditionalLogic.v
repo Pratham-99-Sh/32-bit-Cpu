@@ -1,3 +1,5 @@
+`include "flopenr.v"
+
 module condlogic(input clk, reset,
     input [3:0] Cond,
     input [3:0] ALUFlags,

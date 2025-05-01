@@ -1,3 +1,10 @@
+`include "mux2.v"
+`include "flop.v"
+`include "adder.v"
+`include "regfile.v"
+`include "extend.v"
+`include "alu.v"
+
 module datapath(input clk, reset,
     input [1:0] RegSrc,
     input RegWrite,
