@@ -39,7 +39,7 @@ module decoder(input [1:0] Op,
                 default: ALUControl = 2'bxx; // unimplemented
             endcase
 
-            // update flags if 5th bit is set (C & V only for arith)
+            // update flags if 5th bit is set (C & V only for arithmetic operations)
             FlagW[1] = Funct[0];
             FlagW[0] = Funct[0] & (ALUControl == 2'b00 || ALUControl == 2'b01);
         end else begin
