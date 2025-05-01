@@ -1,5 +1,3 @@
-// fix the alucontrol functions to match with aludecoder inteded function pattern (ex. add, and, ...)
-
 module ALU (
     input  [31:0] SrcA,        // 32-bit input A
     input  [31:0] SrcB,        // 32-bit input B
@@ -12,22 +10,22 @@ module ALU (
 );
     always @(*) begin
         case (ALUControl)
-            2'b00: begin // AND operation
+            2'b10: begin // AND operation
                 ALUResult = SrcA & SrcB;
                 Carry = 0;
                 Overflow = 0;
             end
-            2'b01: begin // OR operation
+            2'b11: begin // OR operation
                 ALUResult = SrcA | SrcB;
                 Carry = 0;
                 Overflow = 0;
             end
-                    2'b10: begin // ADD operation
+            2'b00: begin // ADD operation
                 {Carry, ALUResult} = SrcA + SrcB; // Concatenation to include carry out
                 Overflow = Carry;  // True only for unsigned overflow as if result can't fit in 32bits i.e. ALUResult then carry will have overflow bit thus indicating overflow occured
                 //wont work for signed numbers as they wrap around because 32nd bit is signed bit so we have to check if positive number suddenly become most negative possible in given number of bits or vice versa to detect overflow
             end
-            2'b11: begin // SUB operation
+            2'b01: begin // SUB operation
                 {Carry, ALUResult} = SrcA - SrcB;
                 Overflow = Carry; //same as before
             end
