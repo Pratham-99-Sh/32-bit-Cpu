@@ -17,7 +17,7 @@ module decoder(input [1:0] Op,
             // here i replaced x with 0 as x is not synthsizable
             // even if synthesis tool could replace it with 0 or 1 which ever optimal instead i replaced with 0 as signals off.
                 4'b000?: controls = 10'b0000001001; //10'b0000xx1001;   //DP Reg
-                4'b001?: controls = 10'b0011001001; //10'b0011001x01;   //DPImm
+                4'b001?: controls = 10'b0001001001; //10'b0001001x01;   //DPImm  [i turned 3rd bit from msb to 0 instead of 1 because dataprocessing type of instructions should not write to memroy unlike shown in table.]
                 4'b01?0: controls = 10'b0011010100; //10'b0x11010100;   //STR
                 4'b01?1: controls = 10'b0101011000; //10'b0101011x00;   //LDR
                 4'b10??: controls = 10'b1001100010; //10'b1001100x10;   //B
