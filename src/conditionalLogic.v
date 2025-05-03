@@ -4,7 +4,7 @@ module condlogic(input clk, reset,
     input [3:0] Cond,
     input [3:0] ALUFlags,
     input [1:0] FlagW,
-    input PCSrc, RegW, MemW,
+    input PCS, RegW, MemW,
     output reg PCSrc, RegWrite, MemWrite);
 
   wire [3:0] Flags;
