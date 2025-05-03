@@ -10,8 +10,8 @@ wire [31:0] WriteData, DataAdr;
 wire MemWrite;
 
 // instantiate cpu and memories
-CPU cpu(clk, reset, PC, Instr, MemWrite, DataAdr, WriteData, ReadData);
-inst_memory imem(PC, Instr);
-data_memory dmem(clk, MemWrite, DataAdr, WriteData, ReadData);
+cpu cpu(clk, reset, PC, Instr, MemWrite, DataAdr, WriteData, ReadData);
+imem imem(PC, Instr);
+dmem dmem(clk, MemWrite, DataAdr, WriteData, ReadData);
 
 endmodule

@@ -38,6 +38,6 @@ module datapath(input clk, reset,
 
     // ALU logic
     mux2 #(.WIDTH(32)) srcbmux(WriteData, ExtImm, ALUSrc, SrcB);
-    alu alu(SrcA, SrcB, ALUControl, ALUResult, ALUFlags);
+    ALU alu(SrcA, SrcB, ALUControl, ALUResult, ALUFlags);
 
 endmodule
