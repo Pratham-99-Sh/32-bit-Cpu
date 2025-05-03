@@ -1,4 +1,4 @@
-`include "flopenr.v"
+`include "/workspaces/32-bit-Cpu/src/flopenr.v"
 
 module condlogic(input clk, reset,
     input [3:0] Cond,

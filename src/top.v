@@ -1,6 +1,6 @@
-`include "CPU.v"
-`include "inst_memory.v"
-`include "data_memory.v"
+`include "/workspaces/32-bit-Cpu/src/CPU.v"
+`include "/workspaces/32-bit-Cpu/src/inst_memory.v"
+`include "/workspaces/32-bit-Cpu/src/data_memory.v"
 
 module top(input clk, reset);
 

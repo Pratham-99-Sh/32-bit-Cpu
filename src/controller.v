@@ -1,5 +1,5 @@
-`include "Decoder.v"
-`include "conditionalLogic.v"
+`include "/workspaces/32-bit-Cpu/src/Decoder.v"
+`include "/workspaces/32-bit-Cpu/src/conditionalLogic.v"
 
 module controller(input clk, reset,
                   input [31:12] Instr,

@@ -1,5 +1,5 @@
-`include "controller.v"
-`include "DataPath.v"
+`include "/workspaces/32-bit-Cpu/src/controller.v"
+`include "/workspaces/32-bit-Cpu/src/DataPath.v"
 
 module cpu(input clk, reset,
            output [31:0] PC,

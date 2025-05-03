@@ -1,9 +1,9 @@
-`include "mux2.v"
-`include "flop.v"
-`include "adder.v"
-`include "regfile.v"
-`include "extend.v"
-`include "alu.v"
+`include "/workspaces/32-bit-Cpu/src/mux2.v"
+`include "/workspaces/32-bit-Cpu/src/flop.v"
+`include "/workspaces/32-bit-Cpu/src/adder.v"
+`include "/workspaces/32-bit-Cpu/src/regfile.v"
+`include "/workspaces/32-bit-Cpu/src/extend.v"
+`include "/workspaces/32-bit-Cpu/src/alu.v"
 
 module datapath(input clk, reset,
     input [1:0] RegSrc,
