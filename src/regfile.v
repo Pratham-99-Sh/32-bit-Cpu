@@ -1,7 +1,7 @@
 module regfile (
     input clk,
     input we3,
-    input [4:0] ra1, ra2, wa3,      // RA1 AND RA2 FOR READ
+    input [3:0] ra1, ra2, wa3,      // RA1 AND RA2 FOR READ
     input [31:0] wd3, R15,
     output [31:0] rd1, rd2
 );
