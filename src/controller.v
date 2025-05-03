@@ -4,13 +4,13 @@
 module controller(input clk, reset,
                   input [31:12] Instr,
                   input [3:0] ALUFlags,
-                  output reg [1:0] RegSrc,
-                  output reg RegWrite,
-                  output reg [1:0] ImmSrc,
-                  output reg ALUSrc,
-                  output reg [1:0] ALUControl,
-                  output reg MemWrite, MemtoReg,
-                  output reg PCSrc);
+                  output [1:0] RegSrc,
+                  output RegWrite,
+                  output [1:0] ImmSrc,
+                  output ALUSrc,
+                  output [1:0] ALUControl,
+                  output MemWrite, MemtoReg,
+                  output PCSrc);
 
   // internal wire
   wire [1:0] FlagW;
