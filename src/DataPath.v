@@ -13,10 +13,10 @@ module datapath(input clk, reset,
     input [1:0] ALUControl,
     input MemtoReg,
     input PCSrc,
-    output reg [3:0] ALUFlags,
-    output reg [31:0] PC,
-    input Instr,
-    output reg [31:0] ALUResult, WriteData,
+    output [3:0] ALUFlags,
+    output [31:0] PC,
+    input [31:0] Instr,
+    output [31:0] ALUResult, WriteData,
     input [31:0] ReadData);
 
     wire [31:0] PCNext, PCPlus4, PCPlus8;
@@ -38,6 +38,6 @@ module datapath(input clk, reset,
 
     // ALU logic
     mux2 #(.WIDTH(32)) srcbmux(WriteData, ExtImm, ALUSrc, SrcB);
-    ALU alu(SrcA, SrcB, ALUControl, ALUResult, ALUFlags);
+    ALU alu(SrcA, SrcB, ALUControl, ALUResult, ALUFlags[3], ALUFlags[2], ALUFlags[1], ALUFlags[0]);
 
 endmodule
