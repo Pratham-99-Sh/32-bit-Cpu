@@ -5,10 +5,11 @@ module condlogic(input clk, reset,
     input [3:0] ALUFlags,
     input [1:0] FlagW,
     input PCS, RegW, MemW,
-    output reg PCSrc, RegWrite, MemWrite);
+    output PCSrc, RegWrite, MemWrite);
 
   wire [3:0] Flags;
-  reg CondEx;
+  wire [1:0] FlagWrite;
+  wire CondEx;
 
   flopenr #(.WIDTH(2)) flagreg1(clk, reset, FlagWrite[1], ALUFlags[3:2], Flags[3:2]);
   flopenr #(.WIDTH(2)) flagreg0(clk, reset, FlagWrite[0], ALUFlags[1:0], Flags[1:0]);
@@ -25,7 +26,7 @@ endmodule
 
 module condcheck(input [3:0] Cond,
                  input [3:0] Flags,
-                 output CondEx);
+                 output reg CondEx);
   
   wire neg, zero, carry, overflow, ge;
   assign {neg, zero, carry, overflow} = Flags;
