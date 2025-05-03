@@ -2,18 +2,18 @@ module decoder(input [1:0] Op,
                input [5:0] Funct,
                input [3:0] Rd,
                output reg [1:0] FlagW,
-               output reg PCS, RegW, MemW,
-               output reg MemtoReg, ALUSrc,
-               output reg [1:0] ImmSrc, RegSrc, ALUControl);
+               output PCS, RegW, MemW,
+               output MemtoReg, ALUSrc,
+               output [1:0] ImmSrc, RegSrc, output reg [1:0] ALUControl);
 
     // internal wires
-    reg Branch, ALUOp;
+    wire Branch, ALUOp;
     reg [9:0] controls;
 
     // Main Decoder
     always @(*)
         begin
-            casez({op, funct[5], funct[0]})
+            casez({Op, Funct[5], Funct[0]})
             // here i replaced x with 0 as x is not synthsizable
             // even if synthesis tool could replace it with 0 or 1 which ever optimal instead i replaced with 0 as signals off.
                 4'b000?: controls = 10'b0000001001; //10'b0000xx1001;   //DP Reg
