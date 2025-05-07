@@ -1,5 +1,5 @@
 # run_assembler.py
-from assemblerNew import assemble, save_hex
+from assembler import assemble, save_hex
 
 with open("/workspaces/32-bit-Cpu/assembler/program.s", "r") as f:
     source_code = f.read()
