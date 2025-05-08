@@ -2,3 +2,4 @@ __pycache__/
 program.mem
 test_bench
 testProgram.s
+customTest.v
