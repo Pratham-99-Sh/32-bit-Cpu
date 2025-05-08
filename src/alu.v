@@ -1,12 +1,12 @@
 module ALU (
-    input  [31:0] SrcA,        // 32-bit input A
-    input  [31:0] SrcB,        // 32-bit input B
-    input  [1:0]  ALUControl,  // ALU control signal to select operation
+    input  [31:0] SrcA,          // 32-bit input A
+    input  [31:0] SrcB,          // 32-bit input B
+    input  [1:0]  ALUControl,    // ALU control signal to select operation
     output reg [31:0] ALUResult, // 32-bit result
-    output Zero,           // Zero flag
-    output Negative,       // Negative flag
-    output reg Overflow,       // Overflow flag
-    output reg Carry           // Carry flag
+    output Negative,           // Negative flag
+    output Zero,               // Zero flag
+    output reg Carry,          // Carry flag
+    output reg Overflow        // Overflow flag
 );
     always @(*) begin
         case (ALUControl)
