@@ -65,75 +65,6 @@ def encode_branch(cond, L, imm24):
           | (imm24 & 0xFFFFFF)
     return instr
 
-# def assemble_line(line, addr, labels):
-#     # strip comments and whitespace
-#     line = line.split(';',1)[0].strip()
-#     if not line:
-#         return None
-
-#     # split into mnemonic + rest
-#     parts = line.split(None, 1)
-#     mnem = parts[0].upper()
-#     rest = parts[1] if len(parts) > 1 else ""
-
-#     # 1) pull off condition suffix (two-letter) if any
-#     cond_suffix = ""
-#     base = mnem
-#     for code in sorted((c for c in COND_CODES if c), key=lambda x: -len(x)):
-#         if base.endswith(code):
-#             cond_suffix = code
-#             base = base[:-len(code)]
-#             break
-#     cond = COND_CODES.get(cond_suffix, 0)
-
-#     # 2) branch / branch-link?
-#     if base in ("B", "BL"):
-#         L = 1 if base == "BL" else 0
-#         label = rest.strip()
-#         if label not in labels:
-#             raise ValueError(f"Unknown label '{label}'")
-#         target = labels[label]
-#         # PC used = addr + 8, imm24 in words
-#         imm24 = ((target - (addr + 8)) // 4) & 0xFFFFFF
-#         return encode_branch(cond, L, imm24)
-
-#     # 3) data processing?
-#     if base in CMD_CODES:
-#         S = 1 if mnem.endswith('S') else 0
-#         operands = [o.strip() for o in rest.split(',')]
-#         if len(operands) != 3:
-#             raise ValueError(f"DP needs 3 operands: '{line}'")
-#         Rd_tok, Rn_tok, Src_tok = operands
-#         Rd = parse_register(Rd_tok)
-#         Rn = parse_register(Rn_tok)
-#         if Src_tok.startswith('#'):
-#             I = 1
-#             imm = parse_immediate(Src_tok)
-#             if not (0 <= imm <= 0xFF):
-#                 raise ValueError("Immediate must fit in 8 bits")
-#             Src = imm
-#         else:
-#             I = 0
-#             Src = parse_register(Src_tok)
-#         return encode_dp(cond, CMD_CODES[base], S, Rn, Rd, I, Src)
-
-#     # 4) memory?
-#     if base in MEM_CODES:
-#         L, B = MEM_CODES[base]
-#         # rest should be "Rd, [Rn, #imm]"
-#         rd_str, mem_str = [p.strip() for p in rest.split(',',1)]
-#         Rd = parse_register(rd_str)
-#         m = re.match(r'^\[(R\d+)\s*,\s*#(0x[0-9A-Fa-f]+|\d+)\]$', mem_str)
-#         if not m:
-#             raise ValueError(f"Bad mem syntax: '{mem_str}'")
-#         Rn = parse_register(m.group(1))
-#         off = int(m.group(2), 0)
-#         if not (0 <= off <= 0xFFF):
-#             raise ValueError("Mem offset must fit in 12 bits")
-#         return encode_mem(cond, L, B, Rn, Rd, off)
-
-#     # nothing matched
-#     raise ValueError(f"Unknown instruction '{line}'")
 
 def assemble_line(line, addr, labels):
     # strip comments
@@ -194,7 +125,6 @@ def assemble_line(line, addr, labels):
         return encode_dp(cond, CMD_CODES[base], S, Rn, Rd, I, Src)
 
     # --- 4) Memory, etc. (unchanged) ---
-    # 4) memory?
     if base in MEM_CODES:
         L, B = MEM_CODES[base]
         # rest should be "Rd, [Rn, #imm]"
