@@ -14,10 +14,8 @@ module decoder(input [1:0] Op,
     always @(*)
         begin
             casez({Op, Funct[5], Funct[0]})
-            // here i replaced x with 0 as x is not synthsizable
-            // even if synthesis tool could replace it with 0 or 1 which ever optimal instead i replaced with 0 as signals off.
                 4'b000?: controls = 10'b0000001001; //10'b0000xx1001;   //DP Reg
-                4'b001?: controls = 10'b0001001001; //10'b0001001x01;   //DPImm  [i turned 3rd bit from msb to 0 instead of 1 because dataprocessing type of instructions should not write to memroy unlike shown in table.]
+                4'b001?: controls = 10'b0001001001; //10'b0001001x01;   //DPImm 
                 4'b01?0: controls = 10'b0011010100; //10'b0x11010100;   //STR
                 4'b01?1: controls = 10'b0101011000; //10'b0101011x00;   //LDR
                 4'b10??: controls = 10'b1001100010; //10'b1001100x10;   //B
@@ -49,6 +47,4 @@ module decoder(input [1:0] Op,
     end
 
     assign PCS = ((Rd == 4'b1111) & RegW) | Branch;
-    //Here even if we just write to r15 it will not change pc but we still want to update our pc to that new instruction address
-    //therefore we will keep our PCS high so that PC will get the same signal (result) that regfile writeData port will get.
 endmodule
