@@ -22,13 +22,10 @@ module ALU (
             end
             2'b00: begin // ADD operation
                 {Carry, ALUResult} = SrcA + SrcB; // Concatenation to include carry out
-                //Overflow = Carry;  // True only for unsigned overflow as if result can't fit in 32bits i.e. ALUResult then carry will have overflow bit thus indicating overflow occured
-                //wont work for signed numbers as they wrap around because 32nd bit is signed bit so we have to check if positive number suddenly become most negative possible in given number of bits or vice versa to detect overflow
                 Overflow = (~SrcA[31] & ~SrcB[31] & ALUResult[31]) | (SrcA[31] & SrcB[31] & ~ALUResult[31]);
             end
             2'b01: begin // SUB operation
                 {Carry, ALUResult} = SrcA - SrcB;
-                //Overflow = Carry; //same as before
                 Overflow = (SrcA[31] & ~SrcB[31] & ~ALUResult[31]) | (~SrcA[31] & SrcB[31] & ALUResult[31]);
             end
             default: begin
@@ -39,8 +36,8 @@ module ALU (
         endcase
     end
 
-    assign Zero = (ALUResult == 32'b0) ? 1'b1 : 1'b0;  // Zero flag: 1 if Result is zero
-    assign Negative = ALUResult[31];  // works if signed number
+    assign Zero = (ALUResult == 32'b0) ? 1'b1 : 1'b0;  
+    assign Negative = ALUResult[31];  
 
 
 endmodule
